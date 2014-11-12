@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :promotions
+
   resources :brands
 
   resources :sales
