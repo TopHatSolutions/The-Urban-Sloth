@@ -2,9 +2,7 @@
 
 Current Build Process:
 
-For:
-
-E-Commerce Final Project
+For: E-Commerce Final Project
 
 Goal: a fully functional web store
 
