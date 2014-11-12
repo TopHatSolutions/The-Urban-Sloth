@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :provinces
+
   resources :promotions
 
   resources :brands
