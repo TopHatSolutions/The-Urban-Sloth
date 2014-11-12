@@ -3,7 +3,7 @@
   <form method="post">
     <select name="category">
       <option>All Categories</option>
-      <% @categories.each do |category| %>
+      <% all_categories.each do |category| %>
         <option value="<%= category.id %>"><%= category.name %></option>
       <% end %>
     </select>
