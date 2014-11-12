@@ -1,0 +1,27 @@
+<h1>Listing lifestyles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lifestyles.each do |lifestyle| %>
+      <tr>
+        <td><%= lifestyle.name %></td>
+        <td><%= lifestyle.description %></td>
+        <td><%= link_to 'Show', lifestyle %></td>
+        <td><%= link_to 'Edit', edit_lifestyle_path(lifestyle) %></td>
+        <td><%= link_to 'Destroy', lifestyle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lifestyle', new_lifestyle_path %>
