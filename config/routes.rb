@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root to: 'store#index'
+
   resources :provinces
 
   resources :promotions
