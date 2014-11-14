@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  option_type: MyString
+  option_value: MyString
+  option_price: 9.99
+
+two:
+  option_type: MyString
+  option_value: MyString
+  option_price: 9.99
