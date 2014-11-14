@@ -1,5 +1,5 @@
 ActiveAdmin.register Customer do
-
+  permit_params :full_name, :phone_number, :email_address, :street_address, :postal_code, :province_id
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -13,6 +13,6 @@ ActiveAdmin.register Customer do
   #   permitted << :other if resource.something?
   #   permitted
   # end
-  
+
 
 end
