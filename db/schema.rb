@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141114142656) do
+ActiveRecord::Schema.define(version: 20141114153545) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -69,9 +69,31 @@ ActiveRecord::Schema.define(version: 20141114142656) do
     t.datetime "updated_at"
   end
 
+  create_table "lifestyle_products", force: true do |t|
+    t.integer  "lifestyle_id"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "lifestyles", force: true do |t|
     t.string   "name"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "options", force: true do |t|
+    t.string   "option_type"
+    t.string   "option_value"
+    t.decimal  "option_price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "product_options", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "option_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -83,6 +105,8 @@ ActiveRecord::Schema.define(version: 20141114142656) do
     t.integer  "stock_quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "brand_id"
+    t.integer  "category_id"
   end
 
   create_table "promotions", force: true do |t|
