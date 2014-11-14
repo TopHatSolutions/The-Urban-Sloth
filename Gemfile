@@ -40,3 +40,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 # ActiveAdmin Master track from github
 gem 'activeadmin', github: 'activeadmin'
+
+# ActiveAdmin Dependencies
+gem 'devise'

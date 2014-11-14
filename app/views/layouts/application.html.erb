@@ -9,6 +9,9 @@
 <body>
   <%= render "shared/header" %>
   <div id="content">
+    <!-- define flash messages : at the request of activeAdmin -->
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
     <%= yield %>
 
