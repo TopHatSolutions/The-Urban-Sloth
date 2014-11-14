@@ -1,5 +1,5 @@
 ActiveAdmin.register Product do
-
+  :name, :description, :price, :stock_quantity, :brand_id, :category_id
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
