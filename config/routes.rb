@@ -1,31 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :lifestyle_products
-
-  resources :product_options
-
-  resources :options
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
   root to: 'store#index'
-
-  resources :provinces
-
-  resources :promotions
-
-  resources :brands
-
-  resources :sales
-
-  resources :lifestyles
-
-  resources :categories
-
-  resources :products
-
-  resources :customers
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
