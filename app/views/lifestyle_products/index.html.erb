@@ -1,0 +1,27 @@
+<h1>Listing lifestyle_products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lifestyle</th>
+      <th>Product</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lifestyle_products.each do |lifestyle_product| %>
+      <tr>
+        <td><%= lifestyle_product.lifestyle_id %></td>
+        <td><%= lifestyle_product.product_id %></td>
+        <td><%= link_to 'Show', lifestyle_product %></td>
+        <td><%= link_to 'Edit', edit_lifestyle_product_path(lifestyle_product) %></td>
+        <td><%= link_to 'Destroy', lifestyle_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New lifestyle product', new_lifestyle_product_path %>
