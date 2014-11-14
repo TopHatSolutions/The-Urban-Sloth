@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :product_options
+
   resources :options
 
   devise_for :admin_users, ActiveAdmin::Devise.config
