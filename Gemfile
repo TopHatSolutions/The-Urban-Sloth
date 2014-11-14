@@ -37,3 +37,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
+
+# Add ActiveAdmin to the build
+gem 'activeadmin'
+# add some dependencies
+# gem 'meta_search', '>= 1.1.0.pre'
