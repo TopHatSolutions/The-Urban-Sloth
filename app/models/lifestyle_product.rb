@@ -1,4 +1,4 @@
 class LifestyleProduct < ActiveRecord::Base
-  belongs_to :products
-  belongs_to :lifestyles
+  belongs_to :product
+  belongs_to :lifestyle
 end

@@ -1,4 +1,4 @@
 class ProductOption < ActiveRecord::Base
-  belongs_to :products
-  belongs_to :options
+  belongs_to :product
+  belongs_to :option
 end

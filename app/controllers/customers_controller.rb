@@ -15,10 +15,12 @@ class CustomersController < ApplicationController
   # GET /customers/new
   def new
     @customer = Customer.new
+    @provinces = Province.all
   end
 
   # GET /customers/1/edit
   def edit
+    @provinces = Province.all
   end
 
   # POST /customers

@@ -29,8 +29,8 @@
   </div>
   <div class="field">
     <%= f.label :province_id %><br>
-    <%= f.select_tag :province_id, options_for_select(@provinces) %>
-  </div>  
+    <%= f.select_tag :province_id, options_for_select(all_provinces) %>
+  </div>
   <div class="field">
     <%= f.label :postal_code %><br>
     <%= f.text_field :postal_code %>

@@ -7,4 +7,9 @@ class ApplicationController < ActionController::Base
     @all_categories ||= Category.all
   end
   helper_method :all_categories
+
+  def all_provinces
+    @all_provinces ||= Province.all
+  end
+  helper_method :all_provinces
 end
