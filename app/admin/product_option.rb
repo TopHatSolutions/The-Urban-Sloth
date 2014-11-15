@@ -14,5 +14,4 @@ ActiveAdmin.register ProductOption do
   #   permitted
   # end
 
-
 end
