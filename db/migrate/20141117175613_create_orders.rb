@@ -7,7 +7,7 @@ class CreateOrders < ActiveRecord::Migration
       t.decimal :hst_rate
       t.decimal :total
       t.decimal :sub_total
-      t.int :customer_id
+      t.integer :customer_id
 
       t.timestamps
     end
