@@ -1,11 +1,11 @@
 class PagesController < InheritedResources::Base
 
   def about_view
-    @info = Page.all.where(name: 'About')
+    @info = Page.find_by(name: 'About')
   end
 
   def contact_view
-    @info = Page.all.where(name: 'Contact')
+    @info = Page.find_by(name: 'Contact')
   end
 
   private

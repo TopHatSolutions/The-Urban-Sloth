@@ -1,5 +1,5 @@
 ActiveAdmin.register Option do
-  permit_params :option_type, :option_value, :option_price
+  permit_params :option_type, :option_value, :option_price, :name
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

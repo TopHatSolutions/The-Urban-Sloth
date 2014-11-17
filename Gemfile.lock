@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: 99d76711783c229965095d4b818d02b46093ba5e
+  revision: 3ab53c96afe8feac27a87641555fa0b56ac3c78f
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -69,7 +69,9 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.2.2)
-    formtastic (3.0.0)
+    filterrific (1.4.2)
+      rails (>= 3.1.0)
+    formtastic (3.1.0)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.1.1)
     has_scope (0.6.0.rc)
@@ -82,7 +84,7 @@ GEM
       has_scope (~> 0.6.0.rc)
       railties (>= 3.2, < 4.2)
       responders (~> 1.0)
-    jbuilder (2.2.4)
+    jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (3.1.2)
@@ -177,6 +179,7 @@ DEPENDENCIES
   activeadmin!
   coffee-rails (~> 4.0.0)
   devise
+  filterrific (~> 1.4.2)
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.1.1)
