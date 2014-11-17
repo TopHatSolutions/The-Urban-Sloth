@@ -43,3 +43,6 @@ gem 'activeadmin', github: 'activeadmin'
 
 # ActiveAdmin Dependencies
 gem 'devise'
+
+# File upload gem
+gem 'paperclip', '~> 4.2.0'
