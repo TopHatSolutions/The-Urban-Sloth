@@ -45,7 +45,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 
 # File upload gem
-
+gem 'carrierwave', '~> 0.10.0'
 
 # Filtering
 gem 'filterrific', '~> 1.4.2'

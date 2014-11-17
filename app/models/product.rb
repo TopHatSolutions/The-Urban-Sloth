@@ -5,4 +5,5 @@ class Product < ActiveRecord::Base
   has_many :options, :through => :product_options
   has_many :lifestyle_products
   has_many :lifestyles, :through => :lifestyle_products
+  mount_uploader :image, ImageUploader
 end
