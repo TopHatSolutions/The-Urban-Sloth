@@ -46,3 +46,6 @@ gem 'devise'
 
 # File upload gem
 gem 'paperclip', '~> 4.2.0'
+
+# Filtering
+gem 'filterrific', '~> 1.4.2'

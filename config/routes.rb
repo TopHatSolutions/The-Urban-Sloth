@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :pages
-
-  resources :line_items
-
-  resources :orders
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  #resource :customers
+  get 'about' => 'pages#about_view'
+
+  get 'contact' => 'pages#contact_view'
 
   root to: 'store#index'
 
