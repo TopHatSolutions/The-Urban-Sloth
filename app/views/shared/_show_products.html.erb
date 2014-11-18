@@ -1,0 +1,9 @@
+<h4>Store: </h4>
+<form method="post">
+  <select name="lifestyle">
+    <option>All Lifestyles</option>
+    <% all_lifestyles.each do |lifestyle| %>
+      <option value="<%= lifestyle.id %>"><%= lifestyle.name %></option>
+    <% end %>
+  </select>
+</form>

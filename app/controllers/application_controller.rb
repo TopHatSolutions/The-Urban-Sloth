@@ -12,4 +12,9 @@ class ApplicationController < ActionController::Base
     @all_provinces ||= Province.all
   end
   helper_method :all_provinces
+
+  def all_lifestyles
+    @all_lifestyles ||= Lifestyle.all
+  end
+  helper_method :all_lifestyles
 end

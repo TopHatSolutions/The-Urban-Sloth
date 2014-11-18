@@ -1,8 +1,8 @@
 <div id="features_bar">
-  <% #@featured_products.each do |product| %>
+  <% @featured_products.each do |product| %>
     <div class="featured_item">
-      <% #image_tag @products.(:product_id).image %>
-      <% #@products.(:product_id).name %>
+      <% image_tag @products.(:product_id).image %>
+      <% @products.(:product_id).name %>
     </div>
-  <% #end %>
+  <% end %>
 </div>
