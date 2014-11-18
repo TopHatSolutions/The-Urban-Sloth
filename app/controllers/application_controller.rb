@@ -22,4 +22,9 @@ class ApplicationController < ActionController::Base
     @all_brands ||= Brand.all
   end
   helper_method :all_brands
+
+  def sale_products
+    @sale_products ||= Product.all.where(sale: true)
+  end
+  helper_method :sale_products
 end

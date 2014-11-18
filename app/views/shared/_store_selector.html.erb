@@ -1,12 +1,12 @@
 <h4>Store: </h4>
-<form method="post">
-  <select name="lifestyle">
-    <option>All Lifestyles</option>
-    <% all_lifestyles.each do |lifestyle| %>
-      <option value="<%= lifestyle.id %>"><%= lifestyle.name %></option>
-    <% end %>
-  </select>
-</form>
+<%= form_for @filterrific do |f| %>
+  <%= f.select(
+    :with_lifestyle_id,
+    @filterrific.select_options[:with_lifestyle_id],
+    {include_blank: 'All Lifestyles'}
+  ) %>
+
+<% end %>
 <%# selected_filters.each do |filter| %>
   <a href="<%#= filter.destroy %>"><%#= filter.name %></a>
 <%# end %>

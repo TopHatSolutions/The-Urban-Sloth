@@ -17,6 +17,7 @@ class Product < ActiveRecord::Base
     ]
   )
 
+
   scope :sorted_by, lambda { |sort_key|
     direction = (sort_key =~ /desc$/) ? 'desc' : 'asc'
 
