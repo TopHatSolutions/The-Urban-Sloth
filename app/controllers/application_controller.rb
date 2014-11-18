@@ -17,4 +17,9 @@ class ApplicationController < ActionController::Base
     @all_lifestyles ||= Lifestyle.all
   end
   helper_method :all_lifestyles
+
+  def all_brands
+    @all_brands ||= Brand.all
+  end
+  helper_method :all_brands
 end

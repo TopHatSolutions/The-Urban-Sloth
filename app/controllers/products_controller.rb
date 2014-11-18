@@ -60,6 +60,16 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  filterrific(
+    default_settings: { sorted_by: 'created_at_desc' },
+    filter_names: [
+      :search_query,
+      :sorted_by,
+      :with_country_id,
+      :with_created_at_gte
+    ]
+  )
 
   private
     # Use callbacks to share common setup or constraints between actions.

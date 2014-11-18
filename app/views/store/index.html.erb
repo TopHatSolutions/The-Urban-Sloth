@@ -1,3 +1,24 @@
 
 <% #render "shared/features_bar" %>
 <%= render "shared/search_bar" %>
+<%= render "shared/store_selector" %>
+<div id="store_product_display">
+  <aside id="filters">
+    <section id="filter_by_categories">
+      <h5>Categories: </h5>
+      <ul>
+        <% all_categories.each do |category| %>
+          <li><%= category.name %></li>
+        <% end %>
+      </ul>
+    </section>
+    <section id="filter_by_filters">
+      <h5>Brands: </h5>
+      <ul>
+        <% all_brands.each do |brand| %>
+          <li><%= brand.name %></li>
+        <% end %>
+      </ul>
+    </section>
+  </aside>
+</div>
