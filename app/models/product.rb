@@ -15,9 +15,8 @@ class Product < ActiveRecord::Base
       :search_query,
       :sorted_by,
       :with_lifestyle_id,
-      :with_category_id
-      #:with_country_id,
-      #:with_created_at_gte
+      :with_category_id,
+      :with_brand_id
     ]
   )
 
@@ -46,6 +45,18 @@ class Product < ActiveRecord::Base
 
   }
 
+  scope :with_category_id, lambda { |category_ids|
+    where(:category_id => [*category_ids])
+  }
+
+  scope :with_lifestyle_id, lambda { |lifestyle_ids|
+    where(:lifestyle_id => [*lifestyle_ids])
+  }
+
+  scope :with_brand_id, lambda { |brand_ids|
+    where(:brand_id => [*brand_ids])
+  }
+
   scope :search_query, lambda { |query|
     return nil if query.blank?
 
@@ -60,7 +71,7 @@ class Product < ActiveRecord::Base
     terms.map { |term|
       "(LOWER(products.name) LIKE ? OR LOWER(products.description) LIKE ?)"
     }.join(' AND '),
-      *terms.map { |e| [e] * num_or_conds }.flatten
+      *terms.map { |e| [e] * number_of_ors }.flatten
     )
 
   }
