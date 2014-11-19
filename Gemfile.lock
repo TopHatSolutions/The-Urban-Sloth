@@ -1,12 +1,12 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: 3ab53c96afe8feac27a87641555fa0b56ac3c78f
+  revision: 951f35d6799a2385d020d4a4303967c344a6bb0f
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
       bourbon
       coffee-rails
-      formtastic (~> 3.0)
+      formtastic (~> 3.1)
       formtastic_i18n
       inherited_resources (~> 1.4, != 1.5.0)
       jquery-rails

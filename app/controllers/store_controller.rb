@@ -5,9 +5,10 @@ class StoreController < ApplicationController
 
 
     @filterrific.select_options={
-      with_lifestyle_id: Lifestyle.options_for_select
+      with_lifestyle_id: Lifestyle.options_for_select,
+      with_category_id: Category.options_for_select
     }
-    
+
 
     respond_to do |format|
       format.html

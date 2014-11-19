@@ -1,18 +1,19 @@
 ActiveAdmin.register Product do
-  permit_params :name, :description, :price, :stock_quantity, :brand_id, :category_id, :image
+  permit_params :name, :description, :price, :stock_quantity, :brand_id, :category_id, :image, :sale
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if resource.something?
-  #   permitted
-  # end
+  form :html => { :enctype => "multipart/form-data" } do |f|
+    f.inputs do
+      f.input :category
+      f.input :brand
+      f.input :name
+      f.input :price
+      f.input :stock_quantity
+      f.input :description
+      f.input :image
+      f.input :sale
+    end
+    f.actions
+  end
 
 
 end

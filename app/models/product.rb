@@ -11,7 +11,9 @@ class Product < ActiveRecord::Base
     default_settings: { sorted_by: 'created_at_desc' },
     filter_names: [
       :search_query,
-      :sorted_by
+      :sorted_by,
+      :with_lifestyle_id,
+      :with_category_id
       #:with_country_id,
       #:with_created_at_gte
     ]

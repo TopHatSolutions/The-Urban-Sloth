@@ -1,13 +1,14 @@
 <div id="search_bar">
   <h4>Search</h4>
-  <form method="post">
-    <select name="category">
-      <option>All Categories</option>
-      <% all_categories.each do |category| %>
-        <option value="<%= category.id %>"><%= category.name %></option>
-      <% end %>
-    </select>
-    <input type="text" name="search_parameters" />
-    <input type="submit" name="submit" hidden />
-  </form>
+  <% form_for @filterrific do |f| %>
+    <%= f.select(
+    :with_category_id,
+    @filterrific.select_options[:with_category_id],
+    {include_blank: 'All Categories'}
+  ) %>
+  <%= f.text_field(
+    :search_query,
+    class: 'filterrific-periodically-observed'
+  ) %>
+  <% end %>
 </div>
