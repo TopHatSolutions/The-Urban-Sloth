@@ -21,12 +21,21 @@
       </ul>
     </section>
   </aside>
-  <section id="sale_products">
-    <h3>Sale Products</h3>
-    <% render 'shared/sale_products' %>
-  </section>
-  <section id="all_products">
-    <h3>Products</h3>
-    <%# render %>
-  </section>
+  <div id="products_to_display">
+    <section id="sale_products">
+      <h3>Sale Products</h3>
+      <%= render partial: 'shared/sale_products',
+                 collection: @products.where(sale: true),
+                 as: 'product' %>
+    </section>
+    <section id="all_products">
+      <h3>Products</h3>
+      <%= render partial: 'shared/product',
+                 collection: @products,
+                 as: 'product' %>
+    </section>
+  </div>
+  <div id="bottom-holder">
+    <p>fancy things</p>
+  </div>
 </div>

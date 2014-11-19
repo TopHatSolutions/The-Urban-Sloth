@@ -1,8 +1,19 @@
 // Place all the styles related to the store controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$page_width: 1280px;
+$content_width: 1280px;
+$filter_box_width: 175px;
+$filter_box_height: 500px;
+$centered_margins: 0 auto;
+
 body {
   background-color: #cccccc;
+}
+
+#wrapper {
+  width: $page_width;
+  margin: $centered_margins;
 }
 
 header {
@@ -12,18 +23,13 @@ header {
   }
 
   span {
+    position: relative;
     float: right;
     padding: 15px;
+    right: -60px;
   }
+
 }
-
-
-
-#wrapper {
-  width: 1280px;
-  margin: 0 auto;
-}
-
 
 #search_bar {
   h4, form {
@@ -36,9 +42,39 @@ header {
 }
 
 #content {
-  width: 1000px;
-  margin: 0 auto;
+  width: $content_width;
+  margin: $centered_margins;
   padding: 10px 25px;
   border-radius: 15px;
   background-color: rgba(33, 112, 218, 0.5);
+
+  #store_product_display {
+
+    aside#filters {
+      float:left;
+      width: $filter_box_width;
+      height: $filter_box_height;
+    }
+
+    div#products_to_display {
+      float: left;
+      width: $content_width - $filter_box_width;
+
+      section#all_products {
+
+      }
+    }
+
+
+  }
+  .product {
+    img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  div#bottom-holder {
+    clear: both;
+  }
 }

@@ -7,6 +7,11 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def self.to_currency
+    number_to_currency(self.price)
+  end
+  
+
   # GET /products/1
   # GET /products/1.json
   def show
@@ -60,7 +65,7 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
