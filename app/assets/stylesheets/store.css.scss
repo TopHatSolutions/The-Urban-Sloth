@@ -1,20 +1,44 @@
 // Place all the styles related to the store controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#search_bar h4, form {
-  display: inline-block;
+body {
+  background-color: #cccccc;
+}
+
+header {
+
+  h3 {
+    display: inline-block;
+  }
+
+  span {
+    float: right;
+    padding: 15px;
+  }
+}
+
+
+
+#wrapper {
+  width: 1280px;
+  margin: 0 auto;
+}
+
+
+#search_bar {
+  h4, form {
+    display: inline-block;
+  }
 }
 
 #store_selector h4, form {
   display: inline-block;
 }
 
-header h3 {
-  display: inline-block;
-}
-
 #content {
-  width: 1280px;
+  width: 1000px;
   margin: 0 auto;
-  background-color:
+  padding: 10px 25px;
+  border-radius: 15px;
+  background-color: rgba(33, 112, 218, 0.5);
 }
