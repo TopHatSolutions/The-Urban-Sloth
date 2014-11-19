@@ -5,6 +5,8 @@ class Product < ActiveRecord::Base
   has_many :options, :through => :product_options
   has_many :lifestyle_products
   has_many :lifestyles, :through => :lifestyle_products
+  has_many :line_items
+  has_many :orders, :through => :line_items
   mount_uploader :image, ImageUploader
 
   filterrific(
