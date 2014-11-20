@@ -1,5 +1,10 @@
 <div class="product">
   <img src="<%= product.image %>" />
   <h5><%= product.name %></h5>
+  <ul>
+    <li><%= product.sell_point_1 %></li>
+    <li><%= product.sell_point_2 %></li>
+    <li><%= product.sell_point_3 %></li>
+  </ul>
   <h4><%= number_to_currency(product.price) %></h4>
 </div>

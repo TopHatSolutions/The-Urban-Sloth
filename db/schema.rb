@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120000421) do
+ActiveRecord::Schema.define(version: 20141120212515) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -140,6 +140,9 @@ ActiveRecord::Schema.define(version: 20141120000421) do
     t.integer  "category_id"
     t.string   "image"
     t.boolean  "sale"
+    t.string   "sell_point_1"
+    t.string   "sell_point_2"
+    t.string   "sell_point_3"
   end
 
   create_table "promotions", force: true do |t|
