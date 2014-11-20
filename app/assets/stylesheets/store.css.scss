@@ -1,14 +1,17 @@
 // Place all the styles related to the store controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$page_width: 1000px;
+$page_width: 100%;
 $content_width: 1000px;
 $filter_box_width: 175px;
 $filter_box_height: 500px;
 $centered_margins: 0 auto;
+$number_of_linear_products: 5;
+$product_width: $content_width / $number_of_linear_products - 2;
+$product_height: 300px;
 
 body {
-  background-color: #cccccc;
+  background-color: #eeeeee;
 }
 
 #wrapper {
@@ -17,16 +20,25 @@ body {
 }
 
 header {
+  width: $page_width;
+  background-color: #8AC0CB;
+  position: fixed;
+  padding: 0 25px;
+  margin-left:0;
+  top: 0px;
+  left: -10px;
+
 
   h3 {
+    padding: 0;
     display: inline-block;
   }
 
   span {
     position: relative;
     float: right;
-    padding: 15px;
-    right: -60px;
+    padding-top: 15px;
+    left: -30px;
   }
 
 }
@@ -42,11 +54,14 @@ header {
 }
 
 #content {
+
   width: $content_width;
   margin: $centered_margins;
+  margin-top: 50px;
   padding: 10px 25px;
   border-radius: 15px;
-  background-color: rgba(33, 112, 218, 0.5);
+  //background-color: rgba(38, 147, 168, 0.5);
+  background-color: rgba(33, 112, 218, .25);
 
   #store_product_display {
 
@@ -54,6 +69,12 @@ header {
       float:left;
       width: $filter_box_width;
       height: $filter_box_height;
+      ul {
+        padding: 0 0 0 5px;
+        li {
+          list-style-type:none;
+        }
+      }
     }
 
     div#products_to_display {
@@ -68,9 +89,21 @@ header {
 
   }
   .product {
+    width: $product_width;
+    height: $product_height;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+
     img {
       width: 150px;
       height: 150px;
+    }
+
+    h4 {
+      float: right;
+      position: absolute;
+      bottom: 0px;
     }
   }
 
