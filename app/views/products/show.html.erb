@@ -1,23 +1,24 @@
 <p id="notice"><%= notice %></p>
-
-<div id="product_image">
-  <img src="<%= product.image %>" />
-</div>
-<div id="product_info">
-  <h1><%= product.name %></h1>
-  <h2><%= product.title %></h2>
-  <h3><%= product.price %></h3>
-</div>
-<br />
-<div id="product_features">
-  <h3>Key Features:</h3>
-  <ul>
-    <li><%= product.sell_point_1 %></li>
-    <li><%= product.sell_point_2 %></li>
-    <li><%= product.sell_point_3 %></li>
-  </ul>
-</div>
-<div id="product_description">
-  <h3>Description:</h3>
-  <%= product.description %>
+<div id="product_page">
+  <div id="product_image">
+    <img src="<%= @product.image %>" />
+  </div>
+  <div id="product_info">
+    <h1><%= @product.name %></h1>
+    <h3><%= @product.title %></h3>
+    <h2><%= number_to_currency(@product.price) %></h2>
+  </div>
+  <br />
+  <div id="product_features">
+    <h3>Key Features:</h3>
+    <ul>
+      <li><%= @product.sell_point_1 %></li>
+      <li><%= @product.sell_point_2 %></li>
+      <li><%= @product.sell_point_3 %></li>
+    </ul>
+  </div>
+  <div id="product_description">
+    <h3>Description:</h3>
+    <%= @product.description %>
+  </div>
 </div>

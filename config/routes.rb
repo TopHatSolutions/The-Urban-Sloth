@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  resources :products
+
   get 'show' => 'products#show'
 
   get 'about' => 'pages#about_view'
