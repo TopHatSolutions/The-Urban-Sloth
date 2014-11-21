@@ -8,7 +8,7 @@ $filter_box_height: 500px;
 $centered_margins: 0 auto;
 $number_of_linear_products: 5;
 $product_width: $content_width / $number_of_linear_products - 2;
-$product_height: 400px;
+$product_height: 375px;
 
 body {
   background-color: #eeeeee;
@@ -105,6 +105,10 @@ header {
       position: absolute;
       bottom: 0px;
       right: 0px;
+    }
+
+    ul {
+      padding-left: 15px;
     }
   }
 
