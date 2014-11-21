@@ -7,18 +7,18 @@
     <h1><%= @product.name %></h1>
     <h3><%= @product.title %></h3>
     <h2><%= number_to_currency(@product.price) %></h2>
+    <div id="product_features">
+      <h3>Key Features:</h3>
+      <ul>
+        <li><%= @product.sell_point_1 %></li>
+        <li><%= @product.sell_point_2 %></li>
+        <li><%= @product.sell_point_3 %></li>
+      </ul>
+    </div>
   </div>
   <br />
-  <div id="product_features">
-    <h3>Key Features:</h3>
-    <ul>
-      <li><%= @product.sell_point_1 %></li>
-      <li><%= @product.sell_point_2 %></li>
-      <li><%= @product.sell_point_3 %></li>
-    </ul>
-  </div>
   <div id="product_description">
     <h3>Description:</h3>
-    <%= @product.description %>
+    <%= @product.description.html_safe %>
   </div>
 </div>
