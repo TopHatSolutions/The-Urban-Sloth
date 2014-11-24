@@ -73,6 +73,5 @@ class Product < ActiveRecord::Base
     }.join(' AND '),
       *terms.map { |e| [e] * number_of_ors }.flatten
     )
-
   }
 end

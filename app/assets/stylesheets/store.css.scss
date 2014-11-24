@@ -22,6 +22,7 @@ body {
 }
 
 header {
+  z-index: 1;
   width: $page_width;
   background-color: #8AC0CB;
   position: fixed;
@@ -45,11 +46,13 @@ header {
 }
 
 nav#site_nav {
+  z-index:1;
   width: $page_width;
   position: fixed;
-  top: 50px;
+  top: 48px;
   left: 0px;
-  background-color: rgba(62, 181, 15, 0.5);
+  //background-color: rgba(62, 181, 15, 0.5);
+  background-color: rgba(150,209,126,1);
   text-align: center;
   ul {
     padding: 0;
@@ -102,7 +105,11 @@ nav#site_nav {
       width: $content_width - $filter_box_width;
 
       section#all_products {
-
+        nav {
+          margin-top: 10px;
+          position: relative;
+          right:-350px;
+        }
       }
     }
 
