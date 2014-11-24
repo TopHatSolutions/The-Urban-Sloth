@@ -49,3 +49,5 @@ gem 'carrierwave', '~> 0.10.0'
 
 # Filtering
 gem 'filterrific', '~> 1.4.2'
+
+gem 'kaminari'

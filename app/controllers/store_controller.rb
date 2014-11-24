@@ -1,7 +1,8 @@
 class StoreController < ApplicationController
+  #paginates_per 8
   def index
     @filterrific = Filterrific.new(Product, params[:filterrific] || session[:filterrific_products])
-    @products = Product.filterrific_find(@filterrific).page(params[:page])
+    @products = Product.order(:price).filterrific_find(@filterrific).page(params[:page]).per(8)
 
 
     @filterrific.select_options={

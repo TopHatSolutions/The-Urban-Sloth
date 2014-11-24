@@ -4,7 +4,8 @@
     <%= f.select(
     :with_category_id,
     @filterrific.select_options[:with_category_id],
-    {include_blank: 'All Categories'}
+    {include_blank: 'All Categories'},
+    class: 'filterrific-periodically-observed'
   ) %>
   <%= f.text_field(
     :search_query,

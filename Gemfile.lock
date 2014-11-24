@@ -188,6 +188,7 @@ DEPENDENCIES
   filterrific (~> 1.4.2)
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   rails (= 4.1.1)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

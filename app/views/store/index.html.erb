@@ -30,9 +30,11 @@
     </section>
     <section id="all_products">
       <h3>Products</h3>
+      <%= paginate @products %>
       <%= render partial: 'shared/product',
                  collection: @products,
                  as: 'product' %>
+
     </section>
   </div>
   <div id="bottom-holder">
