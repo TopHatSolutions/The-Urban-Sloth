@@ -9,7 +9,8 @@
     <h4>View: </h4>
     <%= f.select(
       :sorted_by,
-      @filterrific.select_options[:sorted_by]
+      @filterrific.select_options[:sorted_by],
+      class: 'filterrific-periodically-observed'
     ) %>
 
   <% end %>

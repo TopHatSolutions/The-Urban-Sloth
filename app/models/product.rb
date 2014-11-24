@@ -13,9 +13,19 @@ class Product < ActiveRecord::Base
 
   def self.options_for_select
     [
-      ['New Products', 'new_asc'],
-      ['Recently Added', 'recently_added_desc'],
-      ['Recently Updated', 'recently_updated_asc']
+      ['All Products'],
+      ['New Products Only', 'new_asc'],
+      ['Sale Items Only', 'sale_asc'],
+      ['Recently Updated Only', 'recently_updated_asc'],
+      ['Newest First','created_at_desc'],
+      ['Oldest First','created_at_asc'],
+      ['Product Name [a-z]','name_desc'],
+      ['Product Name [z-a]','name_asc'],
+      ['Brand [a-z]','brand_name_desc'],
+      ['Category Name [a-z]','category_name_desc'],
+      ['Category Name [z-a]','category_name_asc'],
+      ['Recently Updated First','updated_at_desc'],
+      ['Recently Updated Last','updated_at_asc'],
     ]
   end
 
@@ -43,19 +53,17 @@ class Product < ActiveRecord::Base
       when /^price_/
         order("products.price #{direction}")
       when /^brand_/
-        order("products.brand_id #{direction}")
+        order("products.brand_name #{direction}")
       when /^category_/
-        order("products.category_id #{direction}")
+        order("products.category_name #{direction}")
       when /^updated_at_/
         order("products.updated_at #{direction}")
-      when /^status_/
-        order("products.status #{direction}")
       when /^new_/
-        where("products.created_at - ?", time.now < 1.day)
+        where("products.created_at > ?",  1.days.ago)
       when /^sale_/
         where("products.sale == true")
       when /^recently_updated_/
-        where("products.updated_at - ?", time.now < 1.day)
+        where("products.updated_at > ?", 1.days.ago)
       else
       raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
     end
