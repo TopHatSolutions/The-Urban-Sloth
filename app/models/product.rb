@@ -8,12 +8,23 @@ class Product < ActiveRecord::Base
   has_many :line_items
   has_many :orders, :through => :line_items
   mount_uploader :image, ImageUploader
+  validates :name, :category, :price, :stock_quantity, :sell_point_1, :sell_point_2, :sell_point_3, presence: true
+  validates :price, :stock_quantity, numericality: true
+
+  def self.options_for_select
+    [
+      ['New Products', 'new_asc'],
+      ['Recently Added', 'recently_added_desc'],
+      ['Recently Updated', 'recently_updated_asc']
+    ]
+  end
 
   filterrific(
     default_settings: { sorted_by: 'created_at_desc' },
     filter_names: [
       :search_query,
       :sorted_by,
+      :filtered_by,
       :with_lifestyle_id,
       :with_category_id,
       :with_brand_id
@@ -39,6 +50,12 @@ class Product < ActiveRecord::Base
         order("products.updated_at #{direction}")
       when /^status_/
         order("products.status #{direction}")
+      when /^new_/
+        where("products.created_at - ?", time.now < 1.day)
+      when /^sale_/
+        where("products.sale == true")
+      when /^recently_updated_/
+        where("products.updated_at - ?", time.now < 1.day)
       else
       raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
     end

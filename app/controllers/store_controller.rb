@@ -7,7 +7,8 @@ class StoreController < ApplicationController
 
     @filterrific.select_options={
       with_lifestyle_id: Lifestyle.options_for_select,
-      with_category_id: Category.options_for_select
+      with_category_id: Category.options_for_select,
+      sorted_by: Product.options_for_select
     }
 
     session[:filterrific_products] = @filterrific.to_hash

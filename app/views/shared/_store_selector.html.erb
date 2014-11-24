@@ -6,6 +6,11 @@
       @filterrific.select_options[:with_lifestyle_id],
       {include_blank: 'All Lifestyles'}
     ) %>
+    <h4>View: </h4>
+    <%= f.select(
+      :sorted_by,
+      @filterrific.select_options[:sorted_by]
+    ) %>
 
   <% end %>
   <%# selected_filters.each do |filter| %>
