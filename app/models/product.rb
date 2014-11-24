@@ -19,11 +19,11 @@ class Product < ActiveRecord::Base
       ['Recently Updated Only', 'recently_updated_asc'],
       ['Newest First','created_at_desc'],
       ['Oldest First','created_at_asc'],
-      ['Product Name [a-z]','name_desc'],
-      ['Product Name [z-a]','name_asc'],
-      ['Brand [a-z]','brand_name_desc'],
-      ['Category Name [a-z]','category_name_desc'],
-      ['Category Name [z-a]','category_name_asc'],
+      ['Product Name [a-z]','name_asc'],
+      ['Product Name [z-a]','name_desc'],
+      ['Brand [a-z]','brand_name_asc'],
+      ['Category Name [a-z]','category_name_asc'],
+      ['Category Name [z-a]','category_name_desc'],
       ['Recently Updated First','updated_at_desc'],
       ['Recently Updated Last','updated_at_asc'],
     ]
@@ -65,7 +65,7 @@ class Product < ActiveRecord::Base
       when /^recently_updated_/
         where("products.updated_at > ?", 1.days.ago)
       else
-      raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
+        all
     end
 
   }
@@ -75,7 +75,7 @@ class Product < ActiveRecord::Base
   }
 
   scope :with_lifestyle_id, lambda { |lifestyle_ids|
-    where(:lifestyle_id => [*lifestyle_ids])
+    where(:lifestyle => [*lifestyle_ids])
   }
 
   scope :with_brand_id, lambda { |brand_ids|

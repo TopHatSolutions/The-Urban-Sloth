@@ -11,8 +11,9 @@
       :search_query,
       class: 'filterrific-periodically-observed'
     ) %>
+  </div>
     <div id="store_selector">
-      <%= f.select(
+      <%#= f.select(
       :with_lifestyle_id,
       @filterrific.select_options[:with_lifestyle_id],
       {include_blank: 'All Lifestyles'}
@@ -25,4 +26,3 @@
         ) %>
       </div>
   <% end %>
-</div>
