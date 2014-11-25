@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -51,3 +51,7 @@ gem 'carrierwave', '~> 0.10.0'
 gem 'filterrific', '~> 1.4.2'
 
 gem 'kaminari'
+
+# bootstrap !
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
