@@ -1,6 +1,14 @@
 class StoreController < ApplicationController
   #paginates_per 8
   def index
+
+    if session[:visit_count]
+      @visit_count = session[:visit_count] + 1
+    else
+      @visit_count = 1
+    end
+    session[:visit_count] = @visit_count
+
     @filterrific = Filterrific.new(Product, params[:filterrific] || session[:filterrific_products])
     @products = Product.filterrific_find(@filterrific).page(params[:page]).per(8)
 
@@ -25,5 +33,16 @@ class StoreController < ApplicationController
       puts "Had to reset filterrific params: #{ e.message }"
       redirect_to(action: :reset_filterrific, format: :html) and return
 
+  end
+
+  def save_to_cart
+    if session[:cart]
+      @cart = session[:cart]
+      @cart.push(params[:id].to_i)
+    else
+      @cart = [params[:id].to_i]
+    end
+    session[:cart] = @cart
+    redirect_to :back
   end
 end
