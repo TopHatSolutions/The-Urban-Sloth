@@ -22,20 +22,23 @@
     </section>
   </aside>
   <div id="products_to_display">
-    <section id="sale_products">
-      <h3>Sale Products</h3>
-      <%= render partial: 'shared/sale_products',
-                 collection: @products.where(sale: true),
-                 as: 'product' %>
-    </section>
+    <% if @products.where(sale: true).count > 0 %>
+      <section id="sale_products">
+        <h3>Sale Products</h3>
+        <%= render partial: 'shared/sale_products',
+                   collection: @products.where(sale: true),
+                   as: 'product' %>
+      </section>
+    <% end %>
     <section id="all_products">
       <h3>Products</h3>
 
       <%= render partial: 'shared/product',
                  collection: @products,
                  as: 'product' %>
-      <%= paginate @products %>
+
     </section>
+    <%= paginate @products %>
   </div>
   <div id="bottom-holder">
     <p> </p>

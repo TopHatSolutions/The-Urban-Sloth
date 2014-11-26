@@ -53,7 +53,7 @@ class Product < ActiveRecord::Base
       when /^price_/
         order("products.price #{direction}")
       when /^brand_/
-        order("products.brand_name #{direction}")
+        order("products.brand.name #{direction}")
       when /^category_/
         order("products.category_name #{direction}")
       when /^updated_at_/

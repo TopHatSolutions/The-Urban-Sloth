@@ -18,6 +18,9 @@ $max_image_height: 400px;
 $product_img-width: 150px;
 $product_img-height: 150px;
 
+$content_top_margin: 125px;
+$content_bottom_margin: 50px;
+
 body {
   background-color: #eeeeee;
 }
@@ -27,15 +30,25 @@ body {
   margin: $centered_margins;
 }
 
-header {
+header, footer {
   z-index: 1;
   width: $page_width;
   background-color: #8AC0CB;
   position: fixed;
   padding: 0 25px;
   margin-left:0;
+}
+
+footer {
+  bottom: 0px;
+  p {
+    padding-top: 10px;
+    text-align: center;
+  }
+}
+
+header {
   top: 0px;
-  left: -10px;
 
   h3 {
     padding: 0;
@@ -86,7 +99,8 @@ nav#site_nav {
 
   width: $content_width;
   margin: $centered_margins;
-  margin-top: 125px;
+  margin-top: $content_top_margin;
+  margin-bottom: $content_bottom_margin;
   padding: 10px 25px;
   border-radius: 15px;
   //background-color: rgba(38, 147, 168, 0.5);
@@ -111,11 +125,12 @@ nav#site_nav {
       width: $products_display_width;
 
       section#all_products {
-        nav {
-          margin-top: 10px;
-          position: relative;
-          right:-350px;
-        }
+
+      }
+      nav {
+        margin-top: 10px;
+        position: relative;
+        right:-350px;
       }
     }
 
