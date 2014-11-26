@@ -2,15 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $page_width: 100%;
+$content_padding_sides: 25px;
+$content_padding_top_and_bottom: 10px;
 $content_width: 1000px;
 $filter_box_width: 175px;
 $filter_box_height: 500px;
 $centered_margins: 0 auto;
+$products_section_width: $content_width - ($content_padding_sides * 2);
+$products_display_width: $products_section_width - $filter_box_width;
 $number_of_linear_products: 4;
-$product_width: ($content_width - $filter_box_width) / $number_of_linear_products - 5;
+$product_width: $products_display_width / $number_of_linear_products - 10;
 $product_height: 400px;
 $max_image_width: 400px;
 $max_image_height: 400px;
+$product_img-width: 150px;
+$product_img-height: 150px;
 
 body {
   background-color: #eeeeee;
@@ -102,7 +108,7 @@ nav#site_nav {
 
     div#products_to_display {
       float: left;
-      width: $content_width - $filter_box_width;
+      width: $products_display_width;
 
       section#all_products {
         nav {
@@ -122,10 +128,16 @@ nav#site_nav {
     vertical-align: top;
     position: relative;
 
-    img {
-      width: 150px;
-      height: 150px;
+    div#product_img {
+      width: $product_img-width;
+      height: $product_img-height;
+      margin: $centered_margins;
+      img {
+        width: $product_img-width;
+        height: $product_img-height;
+      }
     }
+
 
     h4 {
       float: right;
@@ -182,4 +194,10 @@ nav#site_nav {
       clear: both;
     }
   }
+}
+.alert {
+  border: none;
+  border-radius: none;
+  padding: 0;
+  margin: 0;
 }

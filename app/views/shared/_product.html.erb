@@ -1,5 +1,7 @@
 <div class="product">
-  <%= link_to(image_tag(product.image, :border=>0), product_path(product))%>
+  <div id="product_img">
+    <%= link_to(image_tag(product.image, :border=>0), product_path(product))%>
+  </div>
   <h5><%= link_to(product.name, product_path(product)) %></h5>
   <ul>
     <li><%= product.sell_point_1 %></li>
