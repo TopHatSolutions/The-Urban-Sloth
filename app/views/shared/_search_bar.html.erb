@@ -5,24 +5,25 @@
       :with_category_id,
       @filterrific.select_options[:with_category_id],
       {include_blank: 'All Categories'},
-      class: 'filterrific-periodically-observed'
+      class: 'filterrific-periodically-observed btn btn-primary dropdown'
     ) %>
     <%= f.text_field(
       :search_query,
       class: 'filterrific-periodically-observed'
     ) %>
   </div>
-    <div id="store_selector">
-      <%#= f.select(
-      :with_lifestyle_id,
-      @filterrific.select_options[:with_lifestyle_id],
-      {include_blank: 'All Lifestyles'}
-      ) %>
-      <h4>View: </h4>
-      <%= f.select(
+  <div id="store_selector">
+    <%#= f.select(
+    :with_lifestyle_id,
+    @filterrific.select_options[:with_lifestyle_id],
+    {include_blank: 'All Lifestyles'}
+    ) %>
+    <h4>View </h4>
+    <%= f.select(
       :sorted_by,
       @filterrific.select_options[:sorted_by],
-      class: 'filterrific-periodically-observed'
-        ) %>
-      </div>
+      {},
+      class: 'filterrific-periodically-observed btn btn-info dropdown'
+    ) %>
+    </div>
   <% end %>

@@ -1,6 +1,9 @@
 class StoreController < ApplicationController
   #paginates_per 8
   def index
+    @show_progress = true;
+    @show_progress_amt = 58;
+
 
     if session[:visit_count]
       @visit_count = session[:visit_count] + 1
@@ -11,7 +14,7 @@ class StoreController < ApplicationController
 
     @filterrific = Filterrific.new(Product, params[:filterrific] || session[:filterrific_products])
     @products = Product.filterrific_find(@filterrific).page(params[:page]).per(8)
-
+    @sale_products = Product.where(sale: true)
 
     @filterrific.select_options={
       with_lifestyle_id: Lifestyle.options_for_select,

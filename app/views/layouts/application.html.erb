@@ -12,8 +12,16 @@
     <%= render "shared/navigation" %>
     <div id="content">
       <!-- define flash messages : at the request of activeAdmin -->
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if notice %><p class="notice"><%= notice %></p><% end %>
+      <% if alert %><p class="alert"><%= alert %></p><% end %>
+      <% if @show_progress %>
+        <div class="progress">
+          <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="<%= @show_progress_amt %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @show_progress_amt %>%">
+            <span class="sr-only">20% Complete</span>
+            <%= @show_progress_amt %>%
+          </div>
+        </div>
+      <% end %>
 
       <%= yield %>
 

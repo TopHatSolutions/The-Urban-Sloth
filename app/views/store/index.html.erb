@@ -22,23 +22,29 @@
     </section>
   </aside>
   <div id="products_to_display">
-    <% if @products.where(sale: true).count > 0 %>
+    <% if @sale_products.count > 0 %>
       <section id="sale_products">
         <h3>Sale Products</h3>
         <%= render partial: 'shared/sale_products',
-                   collection: @products.where(sale: true),
+                   collection: @sale_products,
                    as: 'product' %>
       </section>
     <% end %>
-    <section id="all_products">
-      <h3>Products</h3>
+    <% if @products.count > 0 %>
+      <section id="all_products">
+        <h3>Products</h3>
 
-      <%= render partial: 'shared/product',
-                 collection: @products,
-                 as: 'product' %>
+        <%= render partial: 'shared/product',
+                   collection: @products,
+                   as: 'product' %>
 
-    </section>
-    <%= paginate @products %>
+      </section>
+      <%= paginate @products %>
+    <% else %>
+      <section id="no_products_found">
+        <div class="alert alert-danger" role="alert">Unfortunately, no products were found matching those parameters, check your settings and try again!</div>
+      </section>
+    <% end %>
   </div>
   <div id="bottom-holder">
     <p> </p>

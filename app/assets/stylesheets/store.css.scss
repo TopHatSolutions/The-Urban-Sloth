@@ -1,25 +1,33 @@
 // Place all the styles related to the store controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Page Variables
 $page_width: 100%;
+$centered_margins: 0 auto;
+
+// Content Variables
 $content_padding_sides: 25px;
 $content_padding_top_and_bottom: 10px;
 $content_width: 1000px;
+$content_top_margin: 105px;
+$content_bottom_margin: 41px;
+
+// Other Variables
 $filter_box_width: 175px;
 $filter_box_height: 500px;
-$centered_margins: 0 auto;
-$products_section_width: $content_width - ($content_padding_sides * 2);
-$products_display_width: $products_section_width - $filter_box_width;
-$number_of_linear_products: 4;
-$product_width: $products_display_width / $number_of_linear_products - 10;
-$product_height: 400px;
 $max_image_width: 400px;
 $max_image_height: 400px;
+
+// Product Variables
+$number_of_linear_products: 4;
+$products_section_width: $content_width - ($content_padding_sides * 2);
+$products_display_width: $products_section_width - $filter_box_width;
+$product_width: $products_display_width / $number_of_linear_products - 10;
+$product_height: 400px;
 $product_img-width: 150px;
 $product_img-height: 150px;
-
-$content_top_margin: 125px;
-$content_bottom_margin: 50px;
+$product_messages_top_margin: 50px;
 
 body {
   background-color: #eeeeee;
@@ -132,6 +140,10 @@ nav#site_nav {
         position: relative;
         right:-350px;
       }
+
+      section#no_products_found {
+        margin-top: $product_messages_top_margin;
+      }
     }
 
 
@@ -209,10 +221,4 @@ nav#site_nav {
       clear: both;
     }
   }
-}
-.alert {
-  border: none;
-  border-radius: none;
-  padding: 0;
-  margin: 0;
 }
