@@ -2,7 +2,7 @@ class StoreController < ApplicationController
   #paginates_per 8
   def index
     @show_progress = true;
-    @show_progress_amt = 58;
+    @show_progress_amt = 72;
 
 
     if session[:visit_count]

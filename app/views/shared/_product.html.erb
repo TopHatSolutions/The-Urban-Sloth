@@ -9,4 +9,5 @@
     <li><%= product.sell_point_3 %></li>
   </ul>
   <h4><%= number_to_currency(product.price) %></h4>
+  <%= link_to 'Add to Cart', add_to_cart_path(product.id), method: 'post', class: 'btn btn-success' %>
 </div>

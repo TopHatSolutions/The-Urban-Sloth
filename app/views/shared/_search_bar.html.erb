@@ -1,15 +1,17 @@
 <div id="search_bar">
   <h4>Search</h4>
-  <%= form_for @filterrific do |f| %>
-    <%= f.select(
-      :with_category_id,
-      @filterrific.select_options[:with_category_id],
-      {include_blank: 'All Categories'},
-      class: 'filterrific-periodically-observed btn btn-primary dropdown'
-    ) %>
+  <%= form_for @filterrific, :html => {class: 'input-group'} do |f| %>
+    <div class="input-group-btn">
+      <%= f.select(
+        :with_category_id,
+        @filterrific.select_options[:with_category_id],
+        {include_blank: 'All Categories'},
+        class: 'filterrific-periodically-observed btn btn-primary dropdown'
+      ) %>
+    </div>
     <%= f.text_field(
       :search_query,
-      class: 'filterrific-periodically-observed'
+      class: 'filterrific-periodically-observed form-control'
     ) %>
   </div>
   <div id="store_selector">
@@ -18,7 +20,7 @@
     @filterrific.select_options[:with_lifestyle_id],
     {include_blank: 'All Lifestyles'}
     ) %>
-    <h4>View </h4>
+    <h4>Sort By </h4>
     <%= f.select(
       :sorted_by,
       @filterrific.select_options[:sorted_by],

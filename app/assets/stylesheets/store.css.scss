@@ -39,7 +39,7 @@ body {
 }
 
 header, footer {
-  z-index: 1;
+  z-index: 3;
   width: $page_width;
   background-color: #8AC0CB;
   position: fixed;
@@ -73,10 +73,10 @@ header {
 }
 
 nav#site_nav {
-  z-index:1;
+  z-index:3;
   width: $page_width;
   position: fixed;
-  top: 48px;
+  top: 55px;
   left: 0px;
   //background-color: rgba(62, 181, 15, 0.5);
   background-color: rgba(150,209,126,1);
@@ -167,9 +167,16 @@ nav#site_nav {
 
 
     h4 {
-      float: right;
+      font-size: 16px;
+      font-weight: bold;
       position: absolute;
       bottom: 0px;
+      left: 0px;
+    }
+
+    a.btn {
+      position:absolute;
+      bottom: 5px;
       right: 0px;
     }
 
