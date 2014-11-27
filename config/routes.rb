@@ -7,11 +7,13 @@ Rails.application.routes.draw do
 
   resources :products
 
-  get 'show' => 'products#show'
+  get 'show' => 'store#product'
 
   get 'about' => 'pages#about_view'
 
   get 'contact' => 'pages#contact_view'
+
+  get 'cart' => 'store#cart'
 
   root to: 'store#index'
 

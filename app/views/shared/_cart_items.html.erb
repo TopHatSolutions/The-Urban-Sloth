@@ -1,0 +1,5 @@
+<div class="cart_item">
+  <%= image_tag(product.image), class: 'class_item_image' %>
+  <%= link_to(truncate(product.name, :length => 50), product_path) %>
+  <h4><%= number_to_currency(product.price) %></h4>
+</div>

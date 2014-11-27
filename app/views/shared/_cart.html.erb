@@ -1,0 +1,9 @@
+<div id="cart">
+  <h3>Your Cart</h3>
+  <%= link_to clear_cart %>
+  <% get_cart_items %>
+  <%= render  partial: 'shared/cart_item',
+              collection: @cart_items,
+              as: 'product' %>
+  <h3>SubTotal: <%= number_to_currency(@cart_subtotal) %></h3>
+</div>
