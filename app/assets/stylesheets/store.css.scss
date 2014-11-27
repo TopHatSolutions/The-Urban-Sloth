@@ -93,15 +93,21 @@ nav#site_nav {
   }
 }
 
-#search_bar {
-  h4, form {
-    display: inline-block;
+form.search_form {
+
+  #store_selector {
+    clear:both;
+    position: relative;
+    float: right;
+    margin-top: 10px;
+    h4, select {
+      display: inline-block;
+    }
   }
+
 }
 
-#store_selector h4, form {
-  display: inline-block;
-}
+
 
 #content {
 
@@ -115,7 +121,7 @@ nav#site_nav {
   background-color: rgba(33, 112, 218, .25);
 
   #store_product_display {
-
+    clear: both;
     aside#filters {
       float:left;
       width: $filter_box_width;

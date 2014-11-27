@@ -35,11 +35,11 @@ Cart Items:
     <% if @products.count > 0 %>
       <section id="all_products">
         <h3>Products</h3>
-
-        <%= render partial: 'shared/product',
-                   collection: @products,
-                   as: 'product' %>
-
+        <div id="filterrific_results">
+          <%= render partial: 'shared/product',
+                     collection: @products,
+                     as: 'product' %>
+        </div>
       </section>
       <%= paginate @products %>
     <% else %>
