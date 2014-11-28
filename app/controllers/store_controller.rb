@@ -44,11 +44,11 @@ class StoreController < ApplicationController
   end
 
   def cart
+    @cart_subtotal = 0.00
     if session[:customer_id]
       @customer = Customer.find(session[:customer_id].to_i)
-    end
 
-    @cart_subtotal = 0.00
+    end
 
     @cart_items = []
     @cart.each do |id|
@@ -76,33 +76,38 @@ class StoreController < ApplicationController
       order.sub_total = session[:order_subtotal]
 
       order.total = order.sub_total + (order.sub_total*order.pst_rate) + (order.sub_total*order.gst_rate) + (order.sub_total*order.hst_rate)
+      respond_to do |format|
+        if order.save
+          puts "Order Saved."
+          @cart_items.each do |product|
 
-      if order.save
-        puts "Order Saved."
-        @cart_items.each do |product|
+            #puts product.name
+            line_item = order.line_items.build
+            line_item.product = product
+            line_item.quantity = 1
+            line_item.price = product.price
 
-          #puts product.name
-          line_item = order.line_items.build
-          line_item.product = product
-          line_item.quantity = 1
-          line_item.price = product.price
-
-          if line_item.save
-            puts "#{product.name} Saved."
-          else
-            puts "Error: "
-            line_item.errors.messages.each do |column, errors|
-              errors.each do |error|
-                puts "The #{column} property #{error}."
+            if line_item.save
+              puts "#{product.name} Saved."
+            else
+              puts "Error: "
+              line_item.errors.messages.each do |column, errors|
+                errors.each do |error|
+                  puts "The #{column} property #{error}."
+                end
               end
             end
           end
-        end
-      else
-        puts "Error: "
-        order.errors.messages.each do |column, errors|
-          errors.each do |error|
-            puts "The #{column} property #{error}."
+          session[:cart] = nil
+          session[:customer_id] = nil
+          format.html { redirect_to root_path, notice: 'You Have Successfully Placed Your Order.' }
+          format.json { render :show, status: :created, location: @customer }
+        else
+          puts "Error: "
+          order.errors.messages.each do |column, errors|
+            errors.each do |error|
+              puts "The #{column} property #{error}."
+            end
           end
         end
       end

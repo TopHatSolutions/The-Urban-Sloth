@@ -19,4 +19,6 @@
       <%= link_to 'Complete Checkout', complete_checkout_path, class: 'btn btn-success' %>
     <% end %>
   </div>
+  <% session[:order_subtotal] = @cart_subtotal %>
+  Session Subtotal: <%= session[:order_subtotal] %>
 </div>
