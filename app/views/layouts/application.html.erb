@@ -16,9 +16,21 @@
       <% if alert %><p class="alert"><%= alert %></p><% end %>
       <% if @show_progress %>
         <div class="progress">
-          <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="<%= @show_progress_amt %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @show_progress_amt %>%">
-            <span class="sr-only">20% Complete</span>
-            <%= @show_progress_amt %>%
+          <div class="progress-bar progress-bar-primary progress-bar-striped active" style="width: <%= @show_progress_percent %>%">
+            <span class="sr-only"><%= @show_progress_percent %>% Complete</span>
+            <%= @show_progress_amt %> points out of <%= @show_progress_max %> possible
+          </div>
+          <div class="progress-bar progress-bar-danger progress-bar-striped active" style="width: <%= @show_progress_left_for_possible %>%">
+            <span class="sr-only"><%= @show_progress_max - @show_progress_percent %>% Complete</span>
+          </div>
+        </div>
+        <div class="progress">
+          <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="<%= @show_progress_amt %>" aria-valuemin="0" aria-valuemax="<%= @show_progress_goal %>" style="width: <%= @show_progress_amt %>%">
+            <span class="sr-only"><%= @show_progress_amt %>% Complete</span>
+            Acheived: <%= @show_progress_amt %>, Goal: <%= @show_progress_goal %>
+          </div>
+          <div class="progress-bar progress-bar-danger progress-bar-striped active" style="width: <%= @show_progress_left_for_goal %>%">
+            <span class="sr-only"><%= @show_progress_left_points %></span>
           </div>
         </div>
       <% end %>
