@@ -5,12 +5,12 @@ class StoreController < ApplicationController
     @show_progress_amt = 72
     @cart_subtotal = 0.00
 
-    def get_cart_items
-      @cart_items = []
-      @cart.each do |id|
-        @cart_items.push(Product.find(id))
-      end
-    end
+    #if @cart
+    #  @cart_items = []
+    #  @cart.each do |id|
+    #    @cart_items.push(Product.find(id))
+    #  end
+    #end
 
     if session[:visit_count]
       @visit_count = session[:visit_count] + 1
@@ -31,8 +31,6 @@ class StoreController < ApplicationController
 
     session[:filterrific_products] = @filterrific.to_hash
 
-
-
     respond_to do |format|
       format.html
       format.js
@@ -45,12 +43,21 @@ class StoreController < ApplicationController
 
   end
 
-  def cart
+  #def cart
+  #  @cart_items = []
+  #  @cart.each do |id|
+  #    @cart_items.push(Product.find(id))
+  #  end
 
-  end
+  #end
 
   def product
   end
+
+  #def clear_cart
+  #  session[:cart] = []
+  #  redirect_to :back
+  #end
 
   def save_to_cart
     if session[:cart]

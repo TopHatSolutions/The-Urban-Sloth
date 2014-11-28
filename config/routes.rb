@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   post 'cart/:id' => 'store#save_to_cart', as: 'add_to_cart'
 
+  #post 'clear_cart' => 'store#clear_cart'
+
   resources :products
 
   get 'show' => 'store#product'
