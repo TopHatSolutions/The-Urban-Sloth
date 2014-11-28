@@ -1,0 +1,15 @@
+<div id="checkout_signin_form">
+  <%= semantic_form_for @customer, :url => checkout_customer_path, :html => {:method => :post}, :remote => false do |f| %>
+    <%=  f.inputs do %>
+      <%=  f.input :full_name, :required => true %>
+      <%=  f.input :phone_number, :required => true %>
+      <%=  f.input :email_address, :required => true %>
+      <%=  f.input :street_address, :required => true %>
+      <%=  f.input :postal_code, :required => true %>
+      <%=  f.input :province, :required => true %>
+    <% end %>
+    <%= f.actions do %>
+      <%= f.action :submit, :as => :button, :label => 'Sign Up', :button_html => {:class => 'btn btn-warning'} %>
+    <% end %>
+  <% end %>
+</div>

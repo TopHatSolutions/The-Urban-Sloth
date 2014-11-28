@@ -44,16 +44,87 @@ class StoreController < ApplicationController
   end
 
   def cart
+    if session[:customer_id]
+      @customer = Customer.find(session[:customer_id].to_i)
+    end
+
     @cart_subtotal = 0.00
 
     @cart_items = []
     @cart.each do |id|
       @cart_items.push(Product.find(id))
     end
+    session[:order_subtotal] = @cart_subtotal
 
   end
 
   def checkout
+    if session[:customer_id]
+      @customer = Customer.find(session[:customer_id])
+      @cart_items = []
+      @cart = session[:cart]
+      @cart.each do |id|
+        @cart_items.push(Product.find(id))
+      end
+
+      order = @customer.orders.build
+
+      order.status = 'new'
+      order.pst_rate = @customer.province.pst_rate
+      order.gst_rate = @customer.province.gst_rate
+      order.hst_rate = @customer.province.hst_rate
+      order.sub_total = session[:order_subtotal]
+
+      order.total = order.sub_total + (order.sub_total*order.pst_rate) + (order.sub_total*order.gst_rate) + (order.sub_total*order.hst_rate)
+
+      if order.save
+        puts "Order Saved."
+        @cart_items.each do |product|
+
+          #puts product.name
+          line_item = order.line_items.build
+          line_item.product = product
+          line_item.quantity = 1
+          line_item.price = product.price
+
+          if line_item.save
+            puts "#{product.name} Saved."
+          else
+            puts "Error: "
+            line_item.errors.messages.each do |column, errors|
+              errors.each do |error|
+                puts "The #{column} property #{error}."
+              end
+            end
+          end
+        end
+      else
+        puts "Error: "
+        order.errors.messages.each do |column, errors|
+          errors.each do |error|
+            puts "The #{column} property #{error}."
+          end
+        end
+      end
+
+    else
+      @customer = Customer.new
+    end
+  end
+
+  def checkout_customer
+    @customer = Customer.new(customer_params)
+
+    respond_to do |format|
+      if @customer.save
+        session[:customer_id] = @customer.id
+        format.html { redirect_to cart_path, notice: 'You Have Successfully Signed Up.' }
+        format.json { render :show, status: :created, location: @customer }
+      else
+        format.html { render :new }
+        format.json { render json: @customer.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def product
@@ -87,5 +158,10 @@ class StoreController < ApplicationController
     end
     session[:cart] = @cart
     redirect_to :back
+  end
+
+  private
+  def customer_params
+    params.require(:customer).permit(:full_name, :phone_number, :email_address, :street_address, :postal_code, :province_id)
   end
 end

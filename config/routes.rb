@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   post 'clear_cart' => 'store#clear_cart'
 
+  post 'create_customer' => 'store#checkout_customer', as: 'checkout_customer'
+
   resources :products
 
   get 'show' => 'store#product'
@@ -18,6 +20,8 @@ Rails.application.routes.draw do
   get 'cart' => 'store#cart'
 
   get 'checkout' => 'store#checkout', as: 'start_checkout'
+
+  get 'checkout' => 'store#checkout', as: 'complete_checkout'
 
   root to: 'store#index'
 

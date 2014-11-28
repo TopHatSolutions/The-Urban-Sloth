@@ -7,9 +7,9 @@
               as: 'product' %>
   <div id="cart_totals_box">
     <h4>SubTotal: <%= number_to_currency(@cart_subtotal) %></h4>
-    <h4>PST: <%= if @customer.nil? then "Shown After Sign In" else @customer.province.pst_rate + "%" unless zero? end%></h4>
-    <h4>GST: <%= if @customer.nil? then "Shown After Sign In" else @customer.province.gst_rate + "%" unless zero? end%></h4>
-    <h4>HST: <%= if @customer.nil? then "Shown After Sign In" else @customer.province.hst_rate + "%" unless zero? end%></h4>
+    <h4>PST: <%= if @customer.nil? then "Shown After Sign In" else @customer.province.pst_rate.to_s + "%" unless @customer.province.pst_rate.zero? end%></h4>
+    <h4>GST: <%= if @customer.nil? then "Shown After Sign In" else @customer.province.gst_rate.to_s + "%" unless @customer.province.gst_rate.zero? end%></h4>
+    <h4>HST: <%= if @customer.nil? then "Shown After Sign In" else @customer.province.hst_rate.to_s + "%" unless @customer.province.hst_rate.zero? end%></h4>
     <h3>Total: <%= if @customer.nil? then "Shown After Sign In" else @cart_total end%></h3>
   </div>
   <div id="checkout_box">
