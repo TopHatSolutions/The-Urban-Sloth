@@ -1,16 +1,16 @@
 class StoreController < ApplicationController
+
+  before_action :get_cart_items
+
   #paginates_per 8
   def index
     @show_progress = true
-    @show_progress_amt = 72
+    @show_progress_amt = 77
     @cart_subtotal = 0.00
 
-    #if @cart
-    #  @cart_items = []
-    #  @cart.each do |id|
-    #    @cart_items.push(Product.find(id))
-    #  end
-    #end
+
+
+
 
     if session[:visit_count]
       @visit_count = session[:visit_count] + 1
@@ -43,21 +43,35 @@ class StoreController < ApplicationController
 
   end
 
-  #def cart
-  #  @cart_items = []
-  #  @cart.each do |id|
-  #    @cart_items.push(Product.find(id))
-  #  end
+  def cart
+    @cart_items = []
+    @cart.each do |id|
+      @cart_items.push(Product.find(id))
+    end
 
-  #end
+  end
 
   def product
   end
 
-  #def clear_cart
-  #  session[:cart] = []
-  #  redirect_to :back
-  #end
+  def get_cart_items
+    if session[:cart]
+      @cart = session[:cart]
+      @cart_items = []
+      @cart.each do |id|
+        @cart_items.push(Product.find(id.to_i))
+        logger.debug id
+      end
+    end
+    
+  end
+
+
+  def clear_cart
+    session[:cart] = nil
+    @cart = nil
+    redirect_to :back
+  end
 
   def save_to_cart
     if session[:cart]

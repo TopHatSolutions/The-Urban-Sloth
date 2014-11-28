@@ -1,7 +1,6 @@
 <div id="cart">
   <h3>Your Cart</h3>
-  <%= link_to 'Clear Cart', clear_cart_path %>
-  <%# get_cart_items %>
+  <%= link_to 'Clear Cart', clear_cart_path, method: 'post' %>
   <%= render  partial: 'shared/cart_item',
               collection: @cart_items,
               as: 'product' %>

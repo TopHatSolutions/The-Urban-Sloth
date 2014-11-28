@@ -29,6 +29,12 @@ $product_img-width: 150px;
 $product_img-height: 150px;
 $product_messages_top_margin: 50px;
 
+// Cart shiz nizzles
+$cart_width: 300px;
+$cart_item_width: 260px;
+$cart_item_image-width: 50px;
+$cart_item_image-height: 50px;
+
 body {
   background-color: #eeeeee;
 }
@@ -108,7 +114,6 @@ form.search_form {
 }
 
 
-
 #content {
 
   width: $content_width;
@@ -124,6 +129,36 @@ form.search_form {
     position: fixed;
     right:0;
     top: 150px;
+    width: $cart_width;
+    z-index: 3;
+
+    div.cart_item {
+      width: $cart_item_width;
+
+      .cart_item_image {
+        width: $cart_item_image-width;
+        height: $cart_item_image-height;
+        display: inline-block;
+        float: left;
+        position: relative;
+      }
+
+      a {
+        float: left;
+        position: relative;
+      }
+
+      h4 {
+        clear: both;
+        position:relative;
+        right: -100px;
+        bottom: 25px;
+      }
+    }
+
+    h3 {
+      clear: both;
+    }
   }
 
   #store_product_display {
