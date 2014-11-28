@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get 'cart' => 'store#cart'
 
+  get 'checkout' => 'store#checkout', as: 'start_checkout'
+
   root to: 'store#index'
 
   concern :paginatable do

@@ -30,10 +30,10 @@ $product_img-height: 150px;
 $product_messages_top_margin: 50px;
 
 // Cart shiz nizzles
-$cart_width: 300px;
-$cart_item_width: 260px;
-$cart_item_image-width: 50px;
-$cart_item_image-height: 50px;
+$mini_cart_width: 300px;
+$mini_cart_item_width: 260px;
+$mini_cart_item_image-width: 50px;
+$mini_cart_item_image-height: 50px;
 
 body {
   background-color: #eeeeee;
@@ -125,19 +125,19 @@ form.search_form {
   //background-color: rgba(38, 147, 168, 0.5);
   background-color: rgba(33, 112, 218, .25);
 
-  div#cart {
+  div#mini_cart {
     position: fixed;
     right:0;
     top: 150px;
-    width: $cart_width;
+    width: $mini_cart_width;
     z-index: 3;
 
     div.cart_item {
-      width: $cart_item_width;
+      width: $mini_cart_item_width;
 
       .cart_item_image {
-        width: $cart_item_image-width;
-        height: $cart_item_image-height;
+        width: $mini_cart_item_image-width;
+        height: $mini_cart_item_image-height;
         display: inline-block;
         float: left;
         position: relative;
@@ -274,5 +274,9 @@ form.search_form {
     div#product_description {
       clear: both;
     }
+  }
+  // Cart Page Stuffs
+  div#page_cart {
+
   }
 }

@@ -1,9 +1,22 @@
-<div id="cart">
-  <h3>Your Cart</h3>
+<div id="page_cart">
+  <h2>Your Cart</h2>
   <%= link_to 'Clear Cart', clear_cart_path %>
   <%# get_cart_items %>
   <%= render  partial: 'shared/cart_item',
-  collection: @cart_items,
-  as: 'product' %>
-  <h3>SubTotal: <%= number_to_currency(@cart_subtotal) %></h3>
+              collection: @cart_items,
+              as: 'product' %>
+  <div id="cart_totals_box">
+    <h4>SubTotal: <%= number_to_currency(@cart_subtotal) %></h4>
+    <h4>PST: <%= if @customer.nil? then "Shown After Sign In" else @customer.province.pst_rate + "%" unless zero? end%></h4>
+    <h4>GST: <%= if @customer.nil? then "Shown After Sign In" else @customer.province.gst_rate + "%" unless zero? end%></h4>
+    <h4>HST: <%= if @customer.nil? then "Shown After Sign In" else @customer.province.hst_rate + "%" unless zero? end%></h4>
+    <h3>Total: <%= if @customer.nil? then "Shown After Sign In" else @cart_total end%></h3>
+  </div>
+  <div id="checkout_box">
+    <% if @customer.nil? %>
+      <%= link_to 'Proceed to Sign In', start_checkout_path, class: 'btn btn-warning' %>
+    <% else %>
+      <%= link_to 'Complete Checkout', complete_checkout_path, class: 'btn btn-success' %>
+    <% end %>
+  </div>
 </div>

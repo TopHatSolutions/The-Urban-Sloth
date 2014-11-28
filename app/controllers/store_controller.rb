@@ -44,11 +44,16 @@ class StoreController < ApplicationController
   end
 
   def cart
+    @cart_subtotal = 0.00
+
     @cart_items = []
     @cart.each do |id|
       @cart_items.push(Product.find(id))
     end
 
+  end
+
+  def checkout
   end
 
   def product
@@ -63,7 +68,7 @@ class StoreController < ApplicationController
         logger.debug id
       end
     end
-    
+
   end
 
 
