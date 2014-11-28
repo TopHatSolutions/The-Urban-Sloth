@@ -1,0 +1,17 @@
+AllCops:
+  Exclude:
+    - db/**/*
+    - config/**/*
+    - script/**/*
+    - bin/**/*
+    - app/admin/**/*
+    - test/**/*
+
+Encoding:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+LineLength:
+  Max: 120
