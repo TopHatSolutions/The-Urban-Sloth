@@ -1,0 +1,12 @@
+<%= orders.each do |order| %>
+<div class="outstanding_order">
+  <p>Customer: <%= order.customer.full_name %></p>
+  <p>Order Number: <%= order.id %></p>
+  <p>Products:
+    <% order.line_items.each do |item| %>
+    <%= link_to item.product.name, product_path(item.product) %>,
+    <% end %>
+  </p>
+  <p>Order Total: <%= number_to_currency(order.total) %></p>
+</div>
+<% end %>

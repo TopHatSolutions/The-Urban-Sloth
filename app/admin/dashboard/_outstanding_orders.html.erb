@@ -1,0 +1,13 @@
+<%= orders %>
+<%= orders.each do |order| %>
+  <div class="outstanding_order">
+    Customer: <%= order.customer.name %>
+    Products:
+    <p>
+      <%= order.line_items.each do |product| %>
+        <%= product.product.name %>,
+      <% end %>
+    </p>
+    Order Total: <%= order.total %>
+  </div>
+<% end %>

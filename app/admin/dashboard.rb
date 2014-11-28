@@ -10,6 +10,13 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
 
+    columns do
+      column do
+        panel "Outstanding Orders" do
+           render "dashboard/outstanding_orders", {:orders => Order.where(status: "new")}
+        end
+      end
+    end
     # Here is an example of a simple dashboard with columns and panels.
     #
     # columns do

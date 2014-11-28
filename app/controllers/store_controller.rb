@@ -5,12 +5,10 @@ class StoreController < ApplicationController
   #paginates_per 8
   def index
     @show_progress = true
-    @show_progress_amt = 77
+    @show_progress_amt = 91
     @cart_subtotal = 0.00
 
-
-
-
+    @sale_products = Product.where(sale: true)
 
     if session[:visit_count]
       @visit_count = session[:visit_count] + 1
