@@ -39,6 +39,10 @@ body {
   background-color: #eeeeee;
 }
 
+a:visited {
+  color: white;
+}
+
 #wrapper {
   width: $page_width;
   margin: $centered_margins;
