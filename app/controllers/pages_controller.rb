@@ -1,5 +1,4 @@
 class PagesController < InheritedResources::Base
-
   def about_view
     @info = Page.find_by(name: 'About')
   end
@@ -10,7 +9,7 @@ class PagesController < InheritedResources::Base
 
   private
 
-    def page_params
-      params.require(:page).permit(:name, :content)
-    end
+  def page_params
+    params.require(:page).permit(:name, :content)
+  end
 end

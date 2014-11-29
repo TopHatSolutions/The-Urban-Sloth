@@ -15,3 +15,5 @@ Documentation:
 
 LineLength:
   Max: 120
+MethodLength:
+  Max: 75
