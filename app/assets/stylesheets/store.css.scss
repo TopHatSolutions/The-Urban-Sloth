@@ -35,6 +35,11 @@ $mini_cart_item_width: 260px;
 $mini_cart_item_image-width: 50px;
 $mini_cart_item_image-height: 50px;
 
+// Fun with colors!
+$link_color-blue: #45a7ae;
+$link_color-green: #50be7f;
+$link_color-purple: #a563eb;
+
 body {
   background-color: #eeeeee;
 }
@@ -42,6 +47,11 @@ body {
 a:visited {
   color: white;
 }
+a:hover {
+  background-color: none;
+  text-decoration: none;
+}
+
 
 #wrapper {
   width: $page_width;
@@ -99,6 +109,13 @@ nav#site_nav {
       list-style-type: none;
       display: inline-block;
       padding: 10px 25px;
+
+      a:link,
+      a:visited,
+      a:hover,
+      a:active {
+        color: $link_color-blue;
+      }
     }
   }
 }
@@ -160,8 +177,24 @@ form.search_form {
       }
     }
 
-    h3 {
-      clear: both;
+    div.panel-body {
+      span.link-to-cart {
+        float:right;
+
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
+          color: $link_color-blue;
+        }
+      }
+    }
+
+    div.panel-footer {
+      h3 {
+        text-align: right;
+        clear: both;
+      }
     }
   }
 
@@ -281,6 +314,15 @@ form.search_form {
   }
   // Cart Page Stuffs
   div#page_cart {
+    overflow: auto;
+    div#cart_totals_box {
+      text-align: right;
+      float: right;
+    }
 
+    div#checkout_box {
+      clear: both;
+      float: right;
+    }
   }
 }

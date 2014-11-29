@@ -78,7 +78,7 @@ class StoreController < ApplicationController
         (order.sub_total * order.hst_rate)
       respond_to do |format|
         if order.save
-          Logger 'Order Saved.'
+          # Logger 'Order Saved.'
           @cart_items.each do |product|
 
             # Logger product.name
@@ -88,9 +88,9 @@ class StoreController < ApplicationController
             line_item.price = product.price
 
             if line_item.save
-              Logger "#{product.name} Saved."
+              # Logger "#{product.name} Saved."
             else
-              Logger 'Error: '
+              # Logger 'Error: '
               line_item.errors.messages.each do |column, errors|
                 errors.each do |error|
                   Logger "The #{column} property #{error}."
@@ -103,10 +103,10 @@ class StoreController < ApplicationController
           format.html { redirect_to root_path, notice: 'You Have Successfully Placed Your Order.' }
           format.json { render :show, status: :created, location: @customer }
         else
-          Logger 'Error: '
+          # Logger 'Error: '
           order.errors.messages.each do |column, errors|
             errors.each do |error|
-              Logger "The #{column} property #{error}."
+              # Logger "The #{column} property #{error}."
             end
           end
         end

@@ -1,6 +1,6 @@
 <div class="cart_item">
   <%= image_tag(product.image, class: 'cart_item_image') %>
-  <%= link_to(truncate(product.name, :length => 75), product) %>
+  <%= link_to(truncate(product.name, :length => 25), product) %>
   <h4><%= number_to_currency(product.price) %></h4>
   <% @cart_subtotal += product.price %>
 </div>

@@ -7,10 +7,28 @@
               as: 'product' %>
   <div id="cart_totals_box">
     <h4>SubTotal: <%= number_to_currency(@cart_subtotal) %></h4>
-    <h4>PST: <%= if @customer.nil? then "Shown After Sign In" else @customer.province.pst_rate.to_s + "%" unless @customer.province.pst_rate.zero? end%></h4>
-    <h4>GST: <%= if @customer.nil? then "Shown After Sign In" else @customer.province.gst_rate.to_s + "%" unless @customer.province.gst_rate.zero? end%></h4>
-    <h4>HST: <%= if @customer.nil? then "Shown After Sign In" else @customer.province.hst_rate.to_s + "%" unless @customer.province.hst_rate.zero? end%></h4>
-    <h3>Total: <%= if @customer.nil? then "Shown After Sign In" else @cart_total end%></h3>
+    <% if @customer %>
+      <% if !@customer.province.pst_rate.zero? %>
+        <% pst_rate = @customer.province.pst_rate %>
+        <h4>PST (<%= pst_rate*100 %>%): <%= number_to_currency(pst = pst_rate * @cart_subtotal) %></h4>
+      <% else %>
+        <% pst = 0.0 %>
+      <% end %>
+      <% if !@customer.province.pst_rate.zero? %>
+        <% gst_rate = @customer.province.gst_rate %>
+        <h4>GST (<%= gst_rate*100 %>%): <%= number_to_currency(gst = gst_rate * @cart_subtotal) %></h4>
+      <% else %>
+        <% gst = 0.0 %>
+      <% end %>
+      <% if !@customer.province.hst_rate.zero? %>
+        <% hst_rate = @customer.province.hst_rate %>
+        <h4>HST (<%= hst_rate*100 %>%): <%= number_to_currency(hst = hst_rate * @cart_subtotal) %></h4>
+      <% else %>
+        <% hst = 0.0 %>
+      <% end %>
+    <% end %>
+    <% @cart_total = @cart_subtotal + pst + gst + hst %>
+    <h3>Total: <%= if @customer.nil? then "Shown After Sign In" else number_to_currency(@cart_total) end%></h3>
   </div>
   <div id="checkout_box">
     <% if @customer.nil? %>
@@ -20,5 +38,4 @@
     <% end %>
   </div>
   <% session[:order_subtotal] = @cart_subtotal %>
-  Session Subtotal: <%= session[:order_subtotal] %>
 </div>

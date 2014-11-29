@@ -1,9 +1,7 @@
-
 <% #render "shared/features_bar" %>
 <%= render "shared/search_bar" %>
 <%#= render "shared/store_selector" %>
-Cart Items: <%= @cart %>
-<%= render  'shared/cart' unless @cart.nil? %>
+<%= render  'shared/mini_cart' unless @cart.nil? %>
 <div id="store_product_display">
   <aside id="filters">
     <section id="filter_by_categories">

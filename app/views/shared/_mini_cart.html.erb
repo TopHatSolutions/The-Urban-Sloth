@@ -1,0 +1,15 @@
+<div id="mini_cart" class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= link_to 'Your Cart', cart_path %></h3>
+  </div>
+  <div class="panel-body">
+    <%= link_to 'Clear Cart', clear_cart_path, method: 'post' %>
+    <%= render  partial: 'shared/mini_cart_item',
+                collection: @cart_items,
+                as: 'product' %>
+    <span class="link-to-cart"><%= link_to 'Go to Cart', cart_path %></span>
+  </div>
+  <div class="panel-footer">
+    <h3>SubTotal: <%= number_to_currency(@cart_subtotal) %></h3>
+  </div>
+</div>

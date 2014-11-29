@@ -12,8 +12,8 @@
     <%= render "shared/navigation" %>
     <div id="content">
       <!-- define flash messages : at the request of activeAdmin -->
-      <% if notice %><p class="notice"><%= notice %></p><% end %>
-      <% if alert %><p class="alert"><%= alert %></p><% end %>
+      <% if notice %><div class="notice alert alert-success"><%= notice %></div><% end %>
+      <% if alert %><div class="alert alert-danger"><%= alert %></div><% end %>
       <% if @show_progress %>
         <div class="progress">
           <div class="progress-bar progress-bar-primary progress-bar-striped active" style="width: <%= @show_progress_percent %>%">
