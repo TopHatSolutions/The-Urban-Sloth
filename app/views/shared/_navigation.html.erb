@@ -3,9 +3,12 @@
     <li><%= link_to 'Home', root_path, class: "btn btn-default"%></li>
     <li><%= link_to 'About', about_path, class: "btn btn-default" %></li>
     <li><%= link_to 'Contact', contact_path, class: "btn btn-default" %></li>
-    <li>
-      <%= link_to 'Cart', cart_path, class: "btn btn-default" unless @cart.nil? %>
-      <span class="badge"><%= @cart.count %></span>
-    </li>
+    <% if @cart %>
+      <li>
+        <%= link_to (cart_path), class: "btn btn-default" do %>
+          Cart <span class="badge"><%= @cart.count %>
+        <% end %>
+      </li>
+    <% end %>
   </ul>
 </nav>
