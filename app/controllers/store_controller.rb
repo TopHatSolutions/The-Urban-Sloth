@@ -132,6 +132,7 @@ class StoreController < ApplicationController
   end
 
   def product
+    @product = Product.find(params[:id])
   end
 
   def grab_cart_items

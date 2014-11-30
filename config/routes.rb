@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   post 'create_customer' => 'store#checkout_customer', as: 'checkout_customer'
 
-  resources :products
+  get 'products/:id' => 'store#product', as: 'product'
 
   get 'show' => 'store#product'
 

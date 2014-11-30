@@ -27,7 +27,7 @@
         <% hst = 0.0 %>
       <% end %>
     <% end %>
-    <% @cart_total = @cart_subtotal + pst + gst + hst %>
+    <% @cart_total = @cart_subtotal + (pst) + (gst) + (hst) unless !@customer %>
     <h3>Total: <%= if @customer.nil? then "Shown After Sign In" else number_to_currency(@cart_total) end%></h3>
   </div>
   <div id="checkout_box">
