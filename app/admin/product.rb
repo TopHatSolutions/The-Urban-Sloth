@@ -1,11 +1,12 @@
 ActiveAdmin.register Product do
-  permit_params :name, :description, :price, :stock_quantity, :brand_id, :category_id, :image, :sale, :sell_point_1, :sell_point_2, :sell_point_3, :title
+  permit_params :name, :slug, :description, :price, :stock_quantity, :brand_id, :category_id, :image, :sale, :sell_point_1, :sell_point_2, :sell_point_3, :title
 
   form :html => { :enctype => "multipart/form-data" } do |f|
     f.inputs do
       f.input :category
       f.input :brand
       f.input :name
+      f.input :slug
       f.input :title
       f.input :price
       f.input :stock_quantity

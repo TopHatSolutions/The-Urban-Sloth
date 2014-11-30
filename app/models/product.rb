@@ -8,8 +8,12 @@ class Product < ActiveRecord::Base
   has_many :line_items
   has_many :orders, through: :line_items
   mount_uploader :image, ImageUploader
-  validates :name, :category, :price, :stock_quantity, :sell_point_1, :sell_point_2, :sell_point_3, presence: true
+  validates :name, :category, :price, :stock_quantity, :sell_point_1, :sell_point_2, :sell_point_3, :slug, presence: true
   validates :price, :stock_quantity, numericality: true
+
+  def to_param
+    slug
+  end
 
   def self.options_for_select
     [
