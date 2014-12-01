@@ -1,41 +1,48 @@
 <div id="page_cart">
   <h2>Your Cart</h2>
-  <%= link_to 'Clear Cart', clear_cart_path %>
-  <%# get_cart_items %>
-  <%= render  partial: 'shared/cart_item',
-              collection: @cart_items,
-              as: 'product' %>
-  <div id="cart_totals_box">
-    <h4>SubTotal: <%= number_to_currency(@cart_subtotal) %></h4>
-    <% if @customer %>
-      <% if !@customer.province.pst_rate.zero? %>
-        <% pst_rate = @customer.province.pst_rate %>
-        <h4>PST (<%= pst_rate*100 %>%): <%= number_to_currency(pst = pst_rate * @cart_subtotal) %></h4>
-      <% else %>
-        <% pst = 0.0 %>
+  <% if @cart %>
+    <%= link_to 'Clear Cart', clear_cart_path, method: 'post' %>
+    <%# get_cart_items %>
+    <%= render  partial: 'shared/cart_item',
+                collection: @cart_items,
+                as: 'product' %>
+    <div id="cart_totals_box">
+      <h4>SubTotal: <%= number_to_currency(@cart_subtotal) %></h4>
+      <% if @customer %>
+        <% if !@customer.province.pst_rate.zero? %>
+          <% pst_rate = @customer.province.pst_rate %>
+          <h4>PST (<%= pst_rate*100 %>%): <%= number_to_currency(pst = pst_rate * @cart_subtotal) %></h4>
+        <% else %>
+          <% pst = 0.0 %>
+        <% end %>
+        <% if !@customer.province.pst_rate.zero? %>
+          <% gst_rate = @customer.province.gst_rate %>
+          <h4>GST (<%= gst_rate*100 %>%): <%= number_to_currency(gst = gst_rate * @cart_subtotal) %></h4>
+        <% else %>
+          <% gst = 0.0 %>
+        <% end %>
+        <% if !@customer.province.hst_rate.zero? %>
+          <% hst_rate = @customer.province.hst_rate %>
+          <h4>HST (<%= hst_rate*100 %>%): <%= number_to_currency(hst = hst_rate * @cart_subtotal) %></h4>
+        <% else %>
+          <% hst = 0.0 %>
+        <% end %>
       <% end %>
-      <% if !@customer.province.pst_rate.zero? %>
-        <% gst_rate = @customer.province.gst_rate %>
-        <h4>GST (<%= gst_rate*100 %>%): <%= number_to_currency(gst = gst_rate * @cart_subtotal) %></h4>
+      <% @cart_total = @cart_subtotal + (pst) + (gst) + (hst) unless !@customer %>
+      <h3>Total: <%= if @customer.nil? then "Shown After Sign In" else number_to_currency(@cart_total) end%></h3>
+    </div>
+    <div id="checkout_box">
+      <% if @customer.nil? %>
+        <%= link_to 'Proceed to Sign In', start_checkout_path, class: 'btn btn-warning' %>
       <% else %>
-        <% gst = 0.0 %>
+        <%= link_to 'Complete Checkout', complete_checkout_path, class: 'btn btn-success' %>
       <% end %>
-      <% if !@customer.province.hst_rate.zero? %>
-        <% hst_rate = @customer.province.hst_rate %>
-        <h4>HST (<%= hst_rate*100 %>%): <%= number_to_currency(hst = hst_rate * @cart_subtotal) %></h4>
-      <% else %>
-        <% hst = 0.0 %>
-      <% end %>
-    <% end %>
-    <% @cart_total = @cart_subtotal + (pst) + (gst) + (hst) unless !@customer %>
-    <h3>Total: <%= if @customer.nil? then "Shown After Sign In" else number_to_currency(@cart_total) end%></h3>
-  </div>
-  <div id="checkout_box">
-    <% if @customer.nil? %>
-      <%= link_to 'Proceed to Sign In', start_checkout_path, class: 'btn btn-warning' %>
-    <% else %>
-      <%= link_to 'Complete Checkout', complete_checkout_path, class: 'btn btn-success' %>
-    <% end %>
-  </div>
-  <% session[:order_subtotal] = @cart_subtotal %>
+    </div>
+  <% else %>
+    <div class="alert alert-warning">
+      There are no items in your cart!
+      <%= link_to 'Back to Store', root_path, class: 'btn btn-sm btn-warning right-align'%> 
+    </div>
+  <% end %>
+  <% session[:subtotal] = @cart_subtotal %>
 </div>

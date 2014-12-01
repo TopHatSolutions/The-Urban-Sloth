@@ -1,5 +1,5 @@
+<%= render  'shared/mini_cart' unless @cart.nil? %>
 <p id="notice"><%= notice %></p>
-Product:<%= @product %>
 <div id="product_page">
   <div class="product_image">
     <%= image_tag(@product.image) unless !@product %>
@@ -8,6 +8,7 @@ Product:<%= @product %>
     <h1><%= @product.name unless !@product%></h1>
     <h3><%= @product.title unless !@product%></h3>
     <h2><%= number_to_currency(@product.price) unless !@product%></h2>
+    <%= link_to 'Add to Cart', add_to_cart_path(@product.id), method: 'post', class: 'btn btn-danger add_to_cart_btn' %>
     <div id="product_features">
       <h3>Key Features:</h3>
       <ul>

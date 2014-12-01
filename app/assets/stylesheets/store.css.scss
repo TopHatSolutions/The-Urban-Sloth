@@ -16,8 +16,8 @@ $content_bottom_margin: 41px;
 // Other Variables
 $filter_box_width: 175px;
 $filter_box_height: 500px;
-$max_image_width: 400px;
-$max_image_height: 400px;
+$max_image_width: 300px;
+$max_image_height: 300px;
 
 // Product Variables
 $number_of_linear_products: 4;
@@ -169,11 +169,24 @@ form.search_form {
         position: relative;
       }
 
+      a:link,
+      a:visited {
+        color: black;
+      }
+      a:hover {
+        color: white;
+      }
+
       h4 {
+        text-align: right;
         clear: both;
         position:relative;
-        right: -100px;
-        bottom: 25px;
+        right: -10px;
+        bottom: 20px;
+      }
+
+      span.block {
+        display: block;
       }
     }
 
@@ -285,7 +298,7 @@ form.search_form {
       line-height: 110%;
     }
 
-    div#product_image {
+    div.product_image {
       display: inline-block;
       float: left;
       width: $max_image_width;
@@ -298,10 +311,17 @@ form.search_form {
     div#product_info {
       display: inline-block;
       float:left;
-      width: $content_width - $max_image_width - 2;
+      width: $products_section_width - $max_image_width - 2;
 
       h2 {
         float:right;
+        position: relative;
+      }
+
+      .add_to_cart_btn {
+        clear: both;
+        float:right;
+        position: relative;
       }
 
       div#product_features {

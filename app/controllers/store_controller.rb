@@ -45,14 +45,16 @@ class StoreController < ApplicationController
   end
 
   def cart
-    @cart_subtotal = 0.00
+    @cart_subtotal = session[:subtotal]
     @customer = Customer.find(session[:customer_id].to_i) unless session[:customer_id].nil?
 
-    @cart_items = []
-    @cart.each do |id|
-      @cart_items.push(Product.find(id))
-    end
-    session[:order_subtotal] = @cart_subtotal
+    #@cart_items = []
+    #if @cart
+    #  @cart.each do |id|
+    #    @cart_items.push(Product.find(id))
+    #  end
+    #end
+    #session[:subtotal] = @cart_subtotal
   end
 
   def checkout
@@ -133,16 +135,24 @@ class StoreController < ApplicationController
 
   def product
     @product = Product.find_by_slug(params[:id])
+    @cart_subtotal = 0.0
+    if session[:subtotal]
+      @cart_subtotal = session[:subtotal]
+    end
   end
 
   def grab_cart_items
     if session[:cart]
+      @subtotal = 0.00
       @cart = session[:cart]
       @cart_items = []
       @cart.each do |id|
-        @cart_items.push(Product.find(id.to_i))
-        logger.debug id
+        @id = id['id']
+        item = Product.find(@id)
+        @cart_items.push({item: item, qty: id['qty']})
+        @subtotal += item.price * id['qty']
       end
+      session[:subtotal] = @subtotal
     else
       return 'No Items in Cart'
     end
@@ -150,16 +160,28 @@ class StoreController < ApplicationController
 
   def clear_cart
     session[:cart] = nil
+    session[:subtotal] = nil
     @cart = nil
     redirect_to :back
   end
 
   def save_to_cart
+    @id = params[:id].to_i
     if session[:cart]
       @cart = session[:cart]
-      @cart.push(params[:id].to_i)
+      if @cart.any? {|i| i['id'] == @id}
+        @cart.each do |i|
+          if i['id'] == @id
+            i['qty'] += 1
+          end
+        end
+      else
+        @cart.push({:id => @id, :qty => 1})
+      end
+
     else
-      @cart = [params[:id].to_i]
+      @cart = []
+      @cart.push({:id => @id, :qty => 1})
     end
     session[:cart] = @cart
     redirect_to :back
