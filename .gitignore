@@ -20,3 +20,6 @@
 
 # Ignore database config
 /config/database.yml
+
+# ignore about stuff
+/about_stuff
