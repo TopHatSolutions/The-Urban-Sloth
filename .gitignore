@@ -23,3 +23,8 @@
 
 # ignore about stuff
 /about_stuff
+
+/Gemfile
+/Gemfile.lock
+
+/db/schema.rb
