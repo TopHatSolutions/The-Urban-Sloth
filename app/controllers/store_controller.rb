@@ -60,11 +60,6 @@ class StoreController < ApplicationController
   def checkout
     if session[:customer_id]
       @customer = Customer.find(session[:customer_id])
-      @cart_items = []
-      @cart = session[:cart]
-      @cart.each do |id|
-        @cart_items.push(Product.find(id))
-      end
 
       order = @customer.orders.build
 
@@ -72,7 +67,7 @@ class StoreController < ApplicationController
       order.pst_rate = @customer.province.pst_rate
       order.gst_rate = @customer.province.gst_rate
       order.hst_rate = @customer.province.hst_rate
-      order.sub_total = session[:order_subtotal]
+      order.sub_total = session[:subtotal]
 
       order.total = order.sub_total +
         (order.sub_total * order.pst_rate) +
@@ -85,9 +80,9 @@ class StoreController < ApplicationController
 
             # Logger product.name
             line_item = order.line_items.build
-            line_item.product = product
+            line_item.product = product[:item]
             line_item.quantity = 1
-            line_item.price = product.price
+            line_item.price = product[:item].price
 
             if line_item.save
               # Logger "#{product.name} Saved."

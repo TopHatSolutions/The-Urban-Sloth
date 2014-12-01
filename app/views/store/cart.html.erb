@@ -29,7 +29,9 @@
         <% end %>
       <% end %>
       <% @cart_total = @cart_subtotal + (pst) + (gst) + (hst) unless !@customer %>
-      <h3>Total: <%= if @customer.nil? then "Shown After Sign In" else number_to_currency(@cart_total) end%></h3>
+      <% if @customer %>
+        <h3>Total: <%= number_to_currency(@cart_total) %></h3>
+      <% end %>
     </div>
     <div id="checkout_box">
       <% if @customer.nil? %>
@@ -41,8 +43,7 @@
   <% else %>
     <div class="alert alert-warning">
       There are no items in your cart!
-      <%= link_to 'Back to Store', root_path, class: 'btn btn-sm btn-warning right-align'%> 
+      <%= link_to 'Back to Store', root_path, class: 'btn btn-sm btn-warning right-align'%>
     </div>
   <% end %>
-  <% session[:subtotal] = @cart_subtotal %>
 </div>

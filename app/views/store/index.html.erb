@@ -2,11 +2,11 @@
 <%= render "shared/search_bar" %>
 <%#= render "shared/store_selector" %>
 <%= render  'shared/mini_cart' unless @cart.nil? %>
-<%= @cart %>
-<% @cart.each do |item| %>
-<%= item['id'] %>
-<%= item['qty'] %>
-<% end unless @cart.nil?%>
+<%#= @cart %>
+<%# @cart.each do |item| %>
+<%#= item['id'] %>
+<%#= item['qty'] %>
+<%# end unless @cart.nil?%>
 <%#= @cart_items %>
 <%#= @cart_items[0][:item].name %>
 <div id="store_product_display">

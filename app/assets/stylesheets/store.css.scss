@@ -35,6 +35,11 @@ $mini_cart_item_width: 260px;
 $mini_cart_item_image-width: 50px;
 $mini_cart_item_image-height: 50px;
 
+// Full cart page shiz nizzles
+$cart_item_image-width: 150px;
+$cart_item_link-color: black;
+$cart_item_link-hover-color: white;
+
 // Fun with colors!
 $link_color-blue: #45a7ae;
 $link_color-green: #50be7f;
@@ -335,7 +340,34 @@ form.search_form {
   // Cart Page Stuffs
   div#page_cart {
     overflow: auto;
+
+    div.cart_item {
+      img {
+        width: $cart_item_image-width;
+      }
+
+      a:link,
+      a:visited {
+        color: $cart_item_link-color;
+      }
+
+      a:hover {
+        color: $cart_item_link-hover-color;
+      }
+
+      h4 {
+        float: right;
+        vertical-align: bottom;
+      }
+
+      input {
+        clear: both;
+        width: 25px;
+      }
+    }
+
     div#cart_totals_box {
+      clear: both;
       text-align: right;
       float: right;
     }

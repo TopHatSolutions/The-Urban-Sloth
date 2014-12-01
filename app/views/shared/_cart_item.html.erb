@@ -1,5 +1,10 @@
-<div class="cart_item">
-  <%= image_tag(product[:item].image, class: 'cart_item_image') %>
-  <%= link_to(truncate(product[:item].name, :length => 75), product_path(product[:item])) %>
-  <h4><%= number_to_currency(product[:item].price) %></h4>
+<div class="cart_item panel panel-success">
+  <div class="panel-body">
+    <%= image_tag(product[:item].image, class: 'cart_item_image') %>
+    <%= link_to(truncate(product[:item].name, :length => 75), product_path(product[:item])) %>
+    <div class="item-info">
+      Qty: <input type="text" class="qty-box" value="<%= product[:qty] %>" />
+      <h4><%= number_to_currency(product[:item].price) %></h4>
+    </div>
+  </div>
 </div>
