@@ -6,7 +6,7 @@ class StoreController < ApplicationController
     @show_progress = true
     @show_progress_max = 115
     @show_progress_goal = 100
-    @show_progress_amt = 103
+    @show_progress_amt = 110
     @show_progress_percent = ((@show_progress_amt.to_f / @show_progress_max) * 100).to_i
     @show_progress_left_for_possible = (@show_progress_goal - @show_progress_percent).round
     @show_progress_left_for_goal = @show_progress_goal - @show_progress_amt
