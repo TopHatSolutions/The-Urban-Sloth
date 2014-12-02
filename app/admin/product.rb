@@ -19,4 +19,8 @@ ActiveAdmin.register Product do
     end
     f.actions
   end
+
+  controller do
+    defaults :finder => :find_by_slug!
+  end
 end

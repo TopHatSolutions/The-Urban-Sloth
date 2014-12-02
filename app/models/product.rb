@@ -12,7 +12,12 @@ class Product < ActiveRecord::Base
   validates :price, :stock_quantity, numericality: true
 
   def to_param
-    slug
+    if invalid? && slug_changed?
+      # return original slug value
+      changes["slug"].first
+    else
+      slug
+    end
   end
 
   def self.options_for_select
